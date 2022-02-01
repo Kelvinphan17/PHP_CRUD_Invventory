@@ -8,6 +8,7 @@ The proposed project outline can be found [here](ProjectDescription.md)
 # Deliverable 2
 
 ## Requirements
+<pre>
 Mark | Description 
 3.0  | Mock-Ups in HTML / CSS
 1.0  | Colour Palette
@@ -17,3 +18,4 @@ Mark | Description
 1.0  | Components (e.g. popups)
 2.0  | Updated README.md to document UI Design System
 1.0  | Git usage (commit messages, all students involved)
+</pre>
