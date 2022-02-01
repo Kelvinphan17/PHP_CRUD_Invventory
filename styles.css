@@ -13,18 +13,17 @@
     width: 400px;
     height: 100%;
 
-    display:flex;
+    display:flex;   
     flex-direction:column;
     justify-content:center;
 }
 
 .sidebar ul {
     list-style-type: none;
-    padding-left: 75px;
 }
 
 .sidebar ul li {
-    padding: 10px 0px;
+    padding: 20px 30px;
     font-size: 24px;
     color: #fff;
 }
@@ -32,4 +31,18 @@
 .sidebar ul li a {
     color: #fff;
     text-decoration: none;
+}
+
+.sidebar ul li:hover {
+    background-color: #6ca4e3;
+    border-radius: 11px;
+    margin: 0px 25px;
+    padding: 20px 15px;
+}
+
+.sidebar .current{
+    background-color: #3c85da;
+    border-radius: 11px;
+    margin: 0px 25px;
+    padding: 20px 15px;
 }
