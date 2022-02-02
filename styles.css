@@ -18,6 +18,22 @@
     justify-content:center;
 }
 
+.sidebar .welcome {
+    position: absolute;
+    top: 35px;
+}
+
+.sidebar .welcome p{
+    font-size: 30px;
+    color: #fff;
+}
+
+.sidebar p {
+    color: #cee1f6 ;
+    padding: 5px 30px;
+    font-size: 22px;
+}
+
 .sidebar ul {
     list-style-type: none;
 }
