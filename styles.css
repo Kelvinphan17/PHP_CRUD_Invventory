@@ -11,6 +11,7 @@ body{
     background-color: #f0f6fc;
 }
 
+/* Sidebard CSS Styling */
 .sidebar{
     position: fixed;
     background-color: #236AB9;
@@ -78,6 +79,8 @@ body{
     padding: 20px 15px;
 }
 
+
+/* Dashboard CSS Styling */
 .dashboard {
     position: relative;
     margin-left: 400px;
@@ -119,4 +122,44 @@ body{
     color: #12345c ;
     font-size: 35px;
     padding-top: 10px;
+}
+
+/* Inventory CSS Styling */
+
+.container{
+
+    position: relative;
+    margin-left: 400px;
+    padding-left: 30px;
+    padding-top: 50px;
+    color: #12345c ;
+
+}
+
+.container h3{
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.container p {
+    font-size: 20px;
+    padding: 15px 0;
+}
+
+.container input {
+    height: 30px;
+}
+
+.container input[type="submit"]{
+    color:#f0f6fc ;
+    background-color: #205ea6 ;
+    height: 35px;
+    width: 60px;
+}
+
+.container input[type="reset"]{
+    color: #f0f6fc;
+    background-color: #205ea6 ;
+    height: 35px;
+    width: 60px;
 }
