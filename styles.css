@@ -75,3 +75,49 @@
     margin: 0px 25px;
     padding: 20px 15px;
 }
+
+.dashboard {
+    position: fixed;
+    background-color: #f0f6fc;
+    margin-left: 400px;
+    height: 100vh;
+    right: 0;
+    left: 0;
+}
+
+.dashboard h1{
+    color: #12345c ;
+    font-weight: bolder;
+    font-size: 80px;
+    margin: 100px 40px 0px 40px;
+    padding-left:10px;
+    text-align: center;
+    border-bottom: 3px solid #194981;
+}
+.stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.stats div {
+    width:500px;
+    height:300px;
+    margin: 100px 100px 0px 100px;
+
+    text-align: center;
+}
+
+.stats div h3{
+    height:65px;
+    color: #12345c;
+    font-size: 40px;
+    border-bottom: 2px solid #194981;
+}
+
+.stats div p {
+    color: #12345c ;
+    font-size: 35px;
+    padding-top: 10px;
+}
