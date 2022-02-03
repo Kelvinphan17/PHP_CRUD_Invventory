@@ -19,13 +19,24 @@
 }
 
 .sidebar .welcome {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     position: absolute;
-    top: 35px;
+    top: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sidebar .welcome img {
+    width: 80px;
+    padding: 20px 0px 0px 20px;
 }
 
 .sidebar .welcome p{
     font-size: 30px;
     color: #fff;
+    padding: 38px 15px;
 }
 
 .sidebar p {
