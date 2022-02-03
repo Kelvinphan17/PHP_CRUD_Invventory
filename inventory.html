@@ -27,7 +27,7 @@
         <div class="container">
 
             <h3>Inventory</h3>
-            <p>Track and Manage your inventory of shoes.</p>
+            <p>Track and manage your inventory of shoes.</p>
 
             <form method="post" action =#>
                 <input name = "item_search" type = "text" size = "50" maxlength = "50" placeholder="Search">
@@ -35,6 +35,19 @@
                 <input type = "reset" value = "clear">
             </form>
 
+            <div class ="additem">
+                <a href=#addpopup><i class="fas fa-plus-square"></i><span>Add Item</span></a>
+            </div>
+
+
+        </div>
+
+        <div id="addpopup" class="overlay">
+            <a href="#" class="cancel"></a>
+            <div class= "popup">
+                <h3>Create new item</h3>
+                <a class="close" href="#">&times;</a>
+            </div>
         </div>
 
     </body>
