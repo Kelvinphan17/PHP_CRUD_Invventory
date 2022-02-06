@@ -156,18 +156,28 @@ body{
 .container input[type="submit"]{
     color:#f0f6fc ;
     background-color: #205ea6 ;
+    opacity: 0.8;
     height: 35px;
     width: 60px;
+}
+
+.container input[type="submit"]:hover{
+    opacity: 1;
 }
 
 .container input[type="reset"]{
     color: #f0f6fc;
     background-color: #205ea6 ;
+    opacity: 0.8;
     height: 35px;
     width: 60px;
 }
+.container input[type="reset"]:hover{
+    opacity: 1;
+}
 
 /* Popup CSS Styling */
+
 .container .additem {
     padding-top: 30px;
 }
@@ -207,8 +217,8 @@ body{
 	padding: 20px;
 	background: #fff;
 	border: 1px solid #666;
-	width: 500px;
-    height: 500px;
+	width: 400px;
+    height: 400px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	position: relative;
 } 
@@ -234,6 +244,38 @@ body{
     width: 100%;
     height: 100%;
     cursor: default;
+}
+
+.overlay .popup form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.overlay .popup form label{
+    padding: 0px 0.3rem 0.3rem 0px;
+}
+
+.overlay .popup form input[type="submit"]{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 4rem;
+    height: 2rem;
+    color:#f0f6fc ;
+    background-color: #205ea6 ;
+    opacity: 0.8;
+    border:0;
+    border-radius: 3px;
+}
+
+
+.overlay .popup form input[type="submit"]:hover{
+    opacity: 1;
+}
+.overlay .popup form span{
+    color:red;
 }
 
 
