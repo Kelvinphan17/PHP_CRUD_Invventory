@@ -50,7 +50,7 @@
                             <th>Purchase Total</th>
                             <th>Market Price</th>
                             <th>Colorway</th>
-                            <th>Date Added</th>
+                            <th>Date Purchased</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,6 +84,34 @@
             <a href="#" class="cancel"></a>
             <div class= "popup">
                 <h3>Create new item</h3>
+
+
+                <form method="post" action =# autocomplete="off">
+                    <label>Name<span>*</span><br>
+                        <input name = "item_name" type = "text" size = "50" maxlength = "50" placeholder="Jordan 1 Retro High Obsidian UNC" required>
+                    </label>
+                    <label>Size<span>*</span><br>
+                        <input name = "item_size" type = "text" size = "5" maxlength = "5" placeholder="11" pattern="[1-9][0-8]?\.?[5]?[KYC]?" title= "Valid Size" required>
+                    </label>
+                    <label>Style Code<br>
+                        <input name = "item_sku" type = "text" size = "15" maxlength = "15" placeholder="555088-140">
+                    </label>
+                    <label>Purchase Price<span>*</span><br>
+                        <input name = "item_price" type = "text" size = "15" maxlength = "15" placeholder="300" pattern="\d*\.?\d+" title= "Valid positive integer" required>
+                    </label>
+                    <label>Market Price<br>
+                        <input name = "item_market" type = "text" size = "15" maxlength = "15" placeholder="500" >
+                    </label>
+                    <label>Colorway<br>
+                        <input name = "item_color" type = "text" size = "35" maxlength = "35" placeholder="SAIL/OBSIDIAN-UNIVERSITY BLUE">
+                    </label>
+                    <label>Purchase Date<span>*</span><br>
+                        <input type="date" name="purchase_date" required>
+                    </label>
+                    <input type = "submit" value = "save">
+                </form>
+
+
                 <a class="close" href="#">&times;</a>
             </div>
         </div>
