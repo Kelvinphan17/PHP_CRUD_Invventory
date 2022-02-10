@@ -41,5 +41,38 @@ All buttons are styled at opacity 0.8 until hovered and coloured ![](https://via
 
 The main font used for subspace is https://fonts.google.com/specimen/Poppins. 
 
-The type scale of all the text uses rem units.
+The type scale of all the text uses rem units so that the text will be sized relative to the browser font sizing. 
+
+On the sidebar the welcome message is 1.8rem while all menu elements are 1.5rem.
+
+On the dashboard page, the main header is 5rem while all subheaders are 2.5rem with their content being 2.3rem
+
+On the inventory page the main header is 2.5rem while all subsequent text is half the size at 1.25rem. Within the inventory table, all text is sized at 1rem.
+
+## Icons and other images
+
+All icons were imported from https://fontawesome.com/. 
+
+The subspace logo was handmade using adobe illustrator. 
+
+Below is a screenshot which include the three icons taken from font awesome (home, inventory and plus) and the subspace logo desgined using adobe illustrator.
+
+![SCreenshot of all icons and images used](../images/allicons.PNG)
+
+## Buttons, Form Elements and Components
+
+Buttons were desined to be of colour ![](https://via.placeholder.com/15/205ea6/000000?text=+) `#205ea6` and were set to opacity 0.8 so that when you hover the opacity will revert back to 1. 
+In the case of "Add item" as it is an anchor element with an icon embedded into it and was coloured to be the same colour as text ![](https://via.placeholder.com/15/12345c/000000?text=+) `#12345c` 
+
+These buttons can be seen in the image below.
+![Screenshot of all buttons](../images/buttons.PNG)
+  
+For the form elements there is a simple search form with a submit and clear button to search through the inventory table pictured below.
+![Screenshot of search form](../images/Form2.PNG)
+
+To access the add item form, we have to click on the "Add item" anchor which will then create a new div that overlays the current page by setting the background to black with an alpha value of 0.5. Normally, this overlay is hidden but on click of "Add item" the overlay will be set to visible and will physically be at a higher z-index than the rest of the page so it will apper on top. This overlay popup include the add item form and one button and one anchor. The button saves all the elements of the form inputs and the anchor is simply a close button that will set the overlay visibility back to hidden. The full popup view can be seen in the screenshot below.
+![Screenshot of the popup overlay](../images/Popup.PNG)
+
+The add item form element is for inputting data about a new item to be added to the inventory list. This overlay includes the required inputs name, size, purchase price and purchase date, all denoted with a red asterisk. From the required attributes, sizing and purchase price are validated to be of the correct format, i.e sizing cannot be 11.7 and purchase price can't include letter. The rest of the form includes optional inputs which include style code, market price and colorway. Below is a screenshot of the form.
+![Screenshot of the add item form](../images/Form1.PNG)
 
