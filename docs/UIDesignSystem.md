@@ -31,4 +31,4 @@ Below are a screenshots of the view of each page with sample data.
 
 ## Colour Palette
 
-The colour palette used in the design of Subspace is mostly monochrome which pivots around the main colour, ![](https://via.placeholder.com/45/236AB9/000000?text=+) `#236AB9'.
+The colour palette used in the design of Subspace is mostly monochrome which pivots around the main colour, ![](https://via.placeholder.com/45/236AB9/000000?text=+) `#236AB9`.
