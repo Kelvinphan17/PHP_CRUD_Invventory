@@ -7,4 +7,4 @@ The proposed project outline can be found [here](docs/ProjectDescription.md)
 
 # Deliverable 2
 
-To view the UI Design system of Subspace, please visit [here](docs/UiDesignSystem.md)
+To view the UI Design system of Subspace, please visit [here](docs/UIDesignSystem.md)
