@@ -4,17 +4,16 @@ This document describes and sets a guideline that communicates the design of the
 
 Here are the requirements that must be fulfilled for the design and mockups.
 
-<pre>
-Mark | Description 
-3.0  | Mock-Ups in HTML / CSS 
-1.0  | Colour Palette
-1.0  | Fonts and Type Scale
-1.0  | Icons (and other images)
-1.0  | Buttons and Form Elements
-1.0  | Components (e.g. popups)
-2.0  | Updated README.md to document UI Design System
-1.0  | Git usage (commit messages, all students involved)
-</pre>
+Mark | Description <br>
+3.0  | [Mock-Ups in HTML / CSS](#mock-ups-in-html--css) <br>
+1.0  | [Colour Palette](#colour-palette)<br>
+1.0  | [Fonts and Type Scale](#fonts-and-type-scale)<br>
+1.0  | [Icons (and other images)](#icons-and-other-images)<br>
+1.0  | [Buttons and Form Elements](#buttons-form-elements-and-components)<br>
+1.0  | [Components (e.g. popups)](#buttons-form-elements-and-components)<br>
+2.0  | Updated README.md to document UI Design System<br>
+1.0  | Git usage (commit messages, all students involved)<br>
+
 
 This document will be going through each requirement one by one. 
 
