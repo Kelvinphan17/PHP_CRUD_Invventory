@@ -20,13 +20,13 @@ This document will be going through each requirement one by one.
 
 ## Mock-Ups in HTML / CSS
 
-The Mock-Ups made for both the dashboard page and inventory page can be found in [dashboard.html](dashboard.html) and [inventory.html](inventory.html) respectively. They are bothed styled with the same css file in [styles.css](styles.css).
+The Mock-Ups made for both the dashboard page and inventory page can be found in [dashboard.html](../dashboard.html) and [inventory.html](../inventory.html) respectively. They are bothed styled with the same css file in [styles.css](../styles.css).
 
 Below are a screenshots of the view of each page with sample data.
 
-![A picture of the dashboard page](screenshots/Dashboard.png)
+![A picture of the dashboard page](../images/Dashboard.png)
 
-![A picture of the inventory page](screenshots/Inventory.png)
+![A picture of the inventory page](../images/Inventory.png)
 
 
 ## Colour Palette
