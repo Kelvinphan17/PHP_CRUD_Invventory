@@ -24,9 +24,9 @@ The Mock-Ups made for both the dashboard page and inventory page can be found in
 
 Below are a screenshots of the view of each page with sample data.
 
-![A picture of the dashboard page](../images/Dashboard.png)
+![A picture of the dashboard page](../images/Dashboard.PNG)
 
-![A picture of the inventory page](../images/Inventory.png)
+![A picture of the inventory page](../images/Inventory.PNG)
 
 
 ## Colour Palette
