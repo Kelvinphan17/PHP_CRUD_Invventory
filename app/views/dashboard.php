@@ -27,7 +27,7 @@
     
                 <div class ="profit"> 
                     <h3>Net Profit</h3>
-                    <p>$0</p>
+                    <p id="profitnumber">$0</p>
                 </div>
 
                 <div class ="salescount"> 
@@ -42,6 +42,23 @@
     
             </div>
         </div>
+
+        <script>
+            window.onload = function(){
+
+                var profit = document.getElementById("profitnumber").textContent;
+
+                var num = parseInt(profit.slice(1));
+
+                if(num > 0){
+                    document.getElementById("profitnumber").style.color= "#00FF00";
+                }
+                else if(num < 0){
+                    document.getElementById("profitnumber").style.color= "#FF0000";
+                }
+            }
+
+        </script>
 
     </body>
     
