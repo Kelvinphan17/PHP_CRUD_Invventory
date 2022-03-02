@@ -10,6 +10,9 @@ Included in this project are 2 scripts that will help with deployment. First is 
    - Creates an ENUM type to store the item status 
    - Creates a table to store all inventory data 
 4. Seeds the database with [seed.sql](../db/seed.sql) which contains sample data
+The script can be found at [create.bat](../bin/db/create.bat).
+
+The second script ```./server.bat``` is a simple script to start a PHP development server on localhost:4000. This script can be found at [server.bat](../server.bat).
 
 ## Refined Design System
 
