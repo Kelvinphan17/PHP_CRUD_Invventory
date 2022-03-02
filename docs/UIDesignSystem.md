@@ -36,6 +36,8 @@ The main content view of each of the pages features a background colour of ![](h
 
 All buttons are styled at opacity 0.8 until hovered, in which they will revert back to full opacity. They are coloured ![](https://via.placeholder.com/15/205ea6/000000?text=+) `#205ea6` with it's inner text colour being ![](https://via.placeholder.com/15/f0f6fc/000000?text=+) `#f0f6fc`.
 
+The colour of the text for the net profit on the dashboard page will change between ![](https://via.placeholder.com/15/12345c/000000?text=+) `#12345c` if there is 0 net profit, ![](https://via.placeholder.com/15/FF0000/000000?text=+) `#FF0000` for a negative net profit and ![](https://via.placeholder.com/15/00FF00/000000?text=+) `#00FF00` for a postive net profit.
+
 ## Fonts and Type Scale
 
 The main font used for subspace is https://fonts.google.com/specimen/Poppins. 
