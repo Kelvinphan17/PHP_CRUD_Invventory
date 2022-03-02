@@ -19,9 +19,10 @@ This document will be going through each requirement one by one.
 
 ## Mock-Ups in HTML / CSS
 
-~~The Mock-Ups made for both the dashboard page and inventory page can be found in [dashboard.html](../dashboard.html) and [inventory.html](../inventory.html) respectively. They are both styled with the same css file in [styles.css](../styles.css). ~~
+~~The Mock-Ups made for both the dashboard page and inventory page can be found in [dashboard.html](../dashboard.html)~~ ~~and [inventory.html](../inventory.html)~~ ~~respectively. They are both styled with the same css file in [styles.css](../styles.css)~~.
 
-The Mock Ups no longer exist in HTML, they are now PHP files. To view the code for each page please visit [dashbaord.php](../app/views/dashboard.php) and [inventory.php](app/views/inventory.php). The CSS can be found at [styles.css](app/views/styles.css). To view these pages in real-time please visit [README.md](../README.md) to view the instructions on how to launch the web app.
+
+The Mock Ups no longer exist in HTML, they are now PHP files. To view the code for each page please visit [dashbaord.php](../app/views/dashboard.php) and [inventory.php](app/views/inventory.php). The CSS can be found at [styles.css](../app/views/styles.css). To view these pages in real-time please visit [README.md](../README.md) to view the instructions on how to launch the web app.
 
 Below are screenshots of the view of each page with populated with sample data.
 
