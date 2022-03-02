@@ -1,3 +1,11 @@
+<?php
+
+$dbconn = pg_connect("host=localhost port=5432 dbname=subspace user=postgres");
+$result = pg_query($dbconn, "SELECT * FROM inventory");
+$data = pg_fetch_all($result);
+
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -41,26 +49,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($data as $row) {?>
                         <tr>
-                            <td>Jordan 1 Retro High Obsidian UNC</td>
-                            <td>11</td>
-                            <td>555088-140</td>
-                            <td>Unsold</td>
-                            <td>$276.85</td>
-                            <td>$700</td>
-                            <td>SAIL/OBSIDIAN-UNIVERSITY BLUE</td>
-                            <td>February 5th, 2022</td>
+                            <td><?php echo $row["product_name"] ?></td>
+                            <td><?php echo $row["item_size"] ?></td>
+                            <td><?php echo $row["style_code"] ?></td>
+                            <td><?php echo $row["product_status"] ?></td>
+                            <td>$<?php echo $row["purchase_price"] ?></td>
+                            <td>$<?php echo $row["market_price"] ?></td>
+                            <td><?php echo $row["colorway"] ?></td>
+                            <td><?php echo $row["purchase_date"] ?></td>
                         </tr>
-                        <tr>
-                            <td>Jordan 1 Retro High Rookie of the Year</td>
-                            <td>11</td>
-                            <td>555088-700</td>
-                            <td>Unsold</td>
-                            <td>$276.85</td>
-                            <td>$795</td>
-                            <td>GOLDEN HARVEST/BLACK-SAIL</td>
-                            <td>February 5th, 2022</td>
-                        </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </diV>   
