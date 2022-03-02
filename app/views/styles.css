@@ -178,21 +178,24 @@ body{
 
 /* Popup CSS Styling */
 
-.container .additem {
-    padding-top: 30px;
-}
 
-.container .additem a{
+.container button {
+    height:2rem;
     font-size: 1.25rem;
     color: #12345c;
     text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-top:20px;
 }
 
-.container .additem a span{
+.container .additem span{
     padding-left: 7px;
 }
 
 .overlay {
+    display:none;
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -200,16 +203,10 @@ body{
     right: 0;
     background: rgba(0,0,0,0.5);
 	transition: opacity 200ms;
-    visibility: hidden;
-	opacity: 0;
     color:#12345c;
     height: 100%;
     width: 100%;
     z-index: 2;
-}
-.overlay:target {
-    visibility: visible;
-    opacity: 1;
 }
 
 .overlay .popup {
@@ -237,13 +234,7 @@ body{
 }
 .overlay .popup .close:hover {
       opacity: 1;
-}
-
-.overlay .cancel {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    cursor: default;
+      cursor: default;
 }
 
 .overlay .popup form{
