@@ -2,7 +2,7 @@
 
 ## Deployment Scripts
 
-Included in this project are 2 scripts that will help with deployment. First is ```./bin/db/create.bat```` which creates a PSQL database that <br>
+Included in this project are 2 scripts that will help with deployment. First is ```./bin/db/create.bat``` which creates a PSQL database that <br>
 1. Checks to see if the db "subspace" already exists and drops it if it does 
 2. Creates the db "subspace" 
 3. Imports [schema.sql](../db/schema.sql) into the db and it 
