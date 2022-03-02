@@ -15,9 +15,9 @@ Mark | Description <br>
 2.0  | Server Technology integrated (e.g. PHP, Elixir, Go) including library and frameworks <br>
 2.0  | Database Technology integrated (e.g. MySQL, Postgres, Redis, etc) <br>
 1.0  | Automated test framework in place <br>
-2.0  | Deployment / Upgrade Scripts working <br>
-1.0  | Refined HTML/CSS + UI Design System <br>
-1.0  | Front-end (mock) interactivity using JavaScript <br>
+2.0  | [Deployment / Upgrade Scripts working](docs/Deliverable3.md#deployment-scripts) <br>
+1.0  | [Refined HTML/CSS + UI Design System](docs/Deliverable3.md#refined-design-system) <br>
+1.0  | [Front-end (mock) interactivity using JavaScript](docs/Deliverable3.md#javascript) <br>
 1.0  | README.md updated with installation / deployment instructions <br>
 
 ## Installation
