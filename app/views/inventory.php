@@ -31,7 +31,7 @@ $data = pg_fetch_all($result);
             </form>
 
             <div class ="additem">
-                <a href=#addpopup><i class="fas fa-plus-square"></i><span>Add Item</span></a>
+                <button id = "additembtn"><i class="fas fa-plus-square"></i><span>Add Item</span></button>
             </div>
 
             <div class="table">
@@ -68,7 +68,6 @@ $data = pg_fetch_all($result);
         </div>
 
         <div id="addpopup" class="overlay">
-            <a href="#" class="cancel"></a>
             <div class= "popup">
                 <h3>Create new item</h3>
 
@@ -99,8 +98,35 @@ $data = pg_fetch_all($result);
                 </form>
 
 
-                <a class="close" href="#">&times;</a>
+                <span class="close">&times;</span>
             </div>
+            
+            <script>
+                var popup = document.getElementById("addpopup");
+
+                // Get the button that opens the popup
+                var btn = document.getElementById("additembtn");
+
+                // Get the span that closes the popup
+                var span = document.getElementsByClassName("close")[0];
+
+                // When user clicks on the button, open the popup
+                btn.onclick = function() {
+                    popup.style.display = "block";
+                }
+
+                // When the user clicks on the x, close the popup
+                span.onclick = function() {
+                    popup.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the popup, close it
+                window.onclick = function(event) {
+                    if (event.target == popup) {
+                        popup.style.display = "none";
+                    }
+                }
+            </script>
         </div>
 
     </body>
