@@ -126,6 +126,12 @@ body{
     padding-top: 10px;
 }
 
+.stats div span{
+    color: #12345c ;
+    font-size: 2.3rem;
+    padding-top: 10px;
+}
+
 /* Inventory CSS Styling */
 
 .container{
