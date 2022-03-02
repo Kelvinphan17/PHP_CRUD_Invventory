@@ -26,9 +26,9 @@ The popup window is now done purely in javascript and it works by changing the d
 The code for the script can be seen in the image below.
 ![Script for popup in JS](../images/popupjs.png)
 
-The next script changes the colour of the net profit number between red, green and default based on the number shown. This works by grabbing the number displayed on the dashboard
-and then changing the ```element.style.color``` to match. The code for the script can be seen in the image below.
-![Script for colour changein JS](../images/colourjs.PNG)
+The next script changes the colour of the net profit number between red, green and default based on the number shown. This works by grabbing the number displayed on the dashboard and then changing the ```element.style.color``` to match. The code for the script can be seen in the image below.
+
+![Script for colour change in JS](../images/colourjs.PNG)
 
 Examples of the colour changing based on the number can be seen in the screenshots below.
 ![Green number for positive profit](../images/positivegreen.png)
