@@ -7,18 +7,11 @@ The proposed project outline can be found [here](docs/ProjectDescription.md)
 
 # Deliverable 2
 
-To view the UI Design system of Subspace, please visit [here](docs/UIDesignSystem.md)
+To view the UI Design system of Subspace, please visit [here](docs/UIDesignSystem.md).
 
 # Deliverable 3
 
-Mark | Description <br>
-2.0  | Server Technology integrated (e.g. PHP, Elixir, Go) including library and frameworks <br>
-2.0  | Database Technology integrated (e.g. MySQL, Postgres, Redis, etc) <br>
-1.0  | Automated test framework in place <br>
-2.0  | [Deployment / Upgrade Scripts working](docs/Deliverable3.md#deployment-scripts) <br>
-1.0  | [Refined HTML/CSS + UI Design System](docs/Deliverable3.md#refined-design-system) <br>
-1.0  | [Front-end (mock) interactivity using JavaScript](docs/Deliverable3.md#javascript) <br>
-1.0  | README.md updated with installation / deployment instructions <br>
+To view the requirements, please visit [here](docs/Deliverable3.md).
 
 ## Installation
 
@@ -26,6 +19,7 @@ You will need the following technologies installed.
 
 * PHP
 * Postgres
+* PHPUnit
 
 ### PHP 8.1+
 
@@ -45,6 +39,13 @@ PHP 8.1.3 (cli) (built: Feb 16 2022 08:26:12) (ZTS Visual C++ 2019 x64)
 Copyright (c) The PHP Group
 Zend Engine v4.1.3, Copyright (c) Zend Technologies
 ```
+### PHPUnit 9.5+
+You will also need PHPUnit installed. I used Composer to add PHPUnit locally to the web app.
+
+```.\vendor\bin\phpunit --version```
+The output should show something similar to
+
+```PHPUnit 9.5.16 by Sebastian Bergmann and contributors.```
 
 ### Postgres 14+
 
@@ -104,6 +105,23 @@ subspace=# \dt
  public | inventory | table | postgres
 (1 row)
 ```
+## Running The Tests
+The tests are run using PHPUnit.
+
+```.\vendor\bin\phpunit .\tests\```
+
+The output should show something similar to
+
+```
+PHPUnit 9.5.16 by Sebastian Bergmann and contributors.
+
+..                                                                  2 / 2 (100%)
+
+Time: 00:00.027, Memory: 4.00 MB
+
+OK (2 tests, 2 assertions)
+```
+
 
 ## Launching Application
 
