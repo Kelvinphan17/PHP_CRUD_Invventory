@@ -1,5 +1,41 @@
 # Deliverable 3
 
+Mark | Description <br>
+2.0  | [Server Technology integrated (e.g. PHP, Elixir, Go) including library and frameworks](#server-technology) <br>
+2.0  | [Database Technology integrated (e.g. MySQL, Postgres, Redis, etc)](#database-technology) <br>
+1.0  | [Automated test framework in place](#test-framework) <br>
+2.0  | [Deployment / Upgrade Scripts working](#deployment-scripts) <br>
+1.0  | [Refined HTML/CSS + UI Design System](#refined-design-system) <br>
+1.0  | [Front-end (mock) interactivity using JavaScript](#javascript) <br>
+1.0  | README.md updated with installation / deployment instructions <br>
+
+## Server Technology
+
+The server technology intergrated for Subspace is PHP. The web app was built and tested on PHP's local server. Below is a screenshot of the typical output after starting the
+web app locally using ```.\server.bat```.
+
+![Server output](../images/server.png)
+
+## Database Technology
+
+Subspace uses the PostgresSQL to store inventory data into a database. Using [create.bat](../bin/db/create.bat) the database is created and seeded. A sample output of browsing
+the databse using a CLI can be seen in the screenshot below.
+
+![Database output](../images/db.png)
+
+## Test Framework
+
+Automatic testing is done with PHPUnit. The tests are run from [TestStats.php](../tests/StatsTest.php) where there are two simple tests, ```testCheckNumOfItems()``` and 
+```testCheckNumOfItemsAfterDelete()```. <br>
+
+```testCheckNumOfItems()``` will connect to the DB and add an entry. The test then asserts that the extra entry was added by checking if a row was added into the DB. <br>
+
+```testCheckNumOfItemsAfterDelete()``` will connect to the DB and delete the most recent row in the DB. The test then asserts that there are only 2 rows left (which contains the sample data).<br>
+
+Below is a screenshot of the output of running this test.
+
+![Test output](../images/testoutput.png)
+
 ## Deployment Scripts
 
 Included in this project are 2 scripts that will help with deployment. First is ```./bin/db/create.bat``` which creates a PSQL database that <br>
