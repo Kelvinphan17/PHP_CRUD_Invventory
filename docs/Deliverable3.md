@@ -18,8 +18,16 @@ web app locally using ```.\server.bat```.
 
 ## Database Technology
 
-Subspace uses the PostgresSQL to store inventory data into a database. Using [create.bat](../bin/db/create.bat) the database is created and seeded. A sample output of browsing
-the databse using a CLI can be seen in the screenshot below.
+Subspace uses the PostgresSQL to store inventory data into a database. To create the db upon deployment, we must call ```./bin/db/create.bat``` which creates a PSQL database that <br>
+1. Checks to see if the db "subspace" already exists and drops it if it does 
+2. Creates the db "subspace" 
+3. Imports [schema.sql](../db/schema.sql) into the db and it 
+   - Creates a sequence to increment unique ID's
+   - Creates an ENUM type to store the item status 
+   - Creates a table to store all inventory data 
+4. Seeds the database with [seed.sql](../db/seed.sql) which contains sample data <br>
+
+Using [create.bat](../bin/db/create.bat) the database is created and seeded. A sample output of browsingthe databse using a CLI can be seen in the screenshot below.
 
 ![Database output](../images/db.png)
 
@@ -38,18 +46,13 @@ Below is a screenshot of the output of running this test.
 
 ## Deployment Scripts
 
-Included in this project are 2 scripts that will help with deployment. First is ```./bin/db/create.bat``` which creates a PSQL database that <br>
-1. Checks to see if the db "subspace" already exists and drops it if it does 
-2. Creates the db "subspace" 
-3. Imports [schema.sql](../db/schema.sql) into the db and it 
-   - Creates a sequence to increment unique ID's
-   - Creates an ENUM type to store the item status 
-   - Creates a table to store all inventory data 
-4. Seeds the database with [seed.sql](../db/seed.sql) which contains sample data <br>
+Included in this project are 3 scripts that will help with deployment. 
 
-The script can be found at [create.bat](../bin/db/create.bat).
+The first script ```./build.bat``` is a script that will zip all files exlcude .git, composer files (vender, composer.json, composer.lock), info.php, tests into a compress folder named "Subspace". This allows the server to be deployed anywhere as the web app is now compressed into a portable zip file. The script can be found at [build.bat](../build.bat).<br>
 
-The second script ```./server.bat``` is a simple script to start a PHP development server on localhost:4000. This script can be found at [server.bat](../server.bat).
+The second script ```deploy.bat``` is meant to be clicked when browsing through Subspace.zip. This script will unzip Subspace.zip and place it into the directory ```C:\Subspace``` and then open a file explorer at that location. When using the script the server will be fully deployed and all you need to do is run ```server.bat``` to start the server. The deploy script can be found at [deploy.bat](../deploy.bat). <br>
+
+The last script ```./server.bat``` is a simple script to start a PHP development server on localhost:4000. This script can be found at [server.bat](../server.bat).
 
 ## Refined Design System
 
