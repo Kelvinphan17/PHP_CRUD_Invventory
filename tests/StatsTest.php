@@ -22,7 +22,14 @@ class StatsTest extends TestCase
     public function testCheckNumOfItemsAfterDelete(): void
     {
         $dbconn = pg_connect("host=localhost port=5432 dbname=subspace user=postgres");
-        pg_query($dbconn,"DELETE FROM inventory WHERE id=3");
+        pg_query($dbconn,"DELETE
+                            FROM inventory 
+                            WHERE id in (
+                                SELECT id 
+                                FROM inventory 
+                                ORDER BY id desc
+                                LIMIT 1
+           )");
 
         $this->assertEquals("2", Stats::CalcItems($dbconn));
     }
