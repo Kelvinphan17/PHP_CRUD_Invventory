@@ -1,3 +1,12 @@
+<?php
+
+$dbconn = pg_connect("host=localhost port=5432 dbname=subspace user=postgres");
+
+require __DIR__ . ("/../models/CalculateStats.php");
+
+?>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -17,7 +26,7 @@
 
                 <div class ="numofitems">
                     <h3>Items in Inventory</h3>
-                    <p>2</p>
+                    <p> <?php echo Stats::CalcItems($dbconn) ?></p>
                 </div>
     
                 <div class ="invworth">
@@ -49,6 +58,7 @@
                 var profit = document.getElementById("profitnumber").textContent;
 
                 var num = parseInt(profit.slice(1));
+
 
                 if(num > 0){
                     document.getElementById("profitnumber").style.color= "#00FF00";
