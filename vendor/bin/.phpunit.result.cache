@@ -1,0 +1,1 @@
+{"version":1,"defects":{"StatsTest::testCheckNumOfItems":3},"times":{"StatsTest::testCheckNumOfItems":0.027,"StatsTest::testCheckNumOfItemsAfterDelete":0.001}}
