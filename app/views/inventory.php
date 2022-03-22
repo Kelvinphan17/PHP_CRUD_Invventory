@@ -4,6 +4,25 @@ $dbconn = pg_connect("host=localhost port=5432 dbname=subspace user=postgres");
 $result = pg_query($dbconn, "SELECT * FROM inventory");
 $data = pg_fetch_all($result);
 
+if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
+    $item_name = $_POST['item_name'];
+    $item_size = $_POST['item_size'];
+    $item_sku = (isset($_POST['item_sku'])) ? $_POST['item_sku'] : NULL;
+    $item_price = $_POST['item_price'];
+    $item_market = (!empty($_POST['item_market'])) ? $_POST['item_market'] : 'NULL';
+    $item_color = (isset($_POST['item_color'])) ? $_POST['item_color'] : NULL;
+    $purchase_date = $_POST['purchase_date'];
+    $sold_price = (!empty($_POST['sold_price'])) ? $_POST['sold_price'] : 'NULL';
+    $status = (!empty($_POST['sold_price'])) ? 1 : 0;
+    $profit = (!empty($_POST['sold_price'])) ? ($sold_price - $item_price) : 'NULL';
+
+    $query = pg_query($dbconn, "INSERT INTO inventory (product_name, item_size, style_code, purchase_price, market_price, sold_price, profit, colorway, purchase_date, product_status) 
+    VALUES ('$item_name', $item_size, '$item_sku', $item_price, $item_market, $sold_price, $profit, '$item_color', '$purchase_date', $status);");
+
+    header( "Location: {$_SERVER['REQUEST_URI']}", true, 303 );
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +63,8 @@ $data = pg_fetch_all($result);
                             <th>Status</th>
                             <th>Purchase Total</th>
                             <th>Market Price</th>
+                            <th>Sold For</th>
+                            <th>Profit</th>
                             <th>Colorway</th>
                             <th>Date Purchased</th>
                         </tr>
@@ -54,9 +75,11 @@ $data = pg_fetch_all($result);
                             <td><?php echo $row["product_name"] ?></td>
                             <td><?php echo $row["item_size"] ?></td>
                             <td><?php echo $row["style_code"] ?></td>
-                            <td><?php echo $row["product_status"] ?></td>
-                            <td>$<?php echo $row["purchase_price"] ?></td>
-                            <td>$<?php echo $row["market_price"] ?></td>
+                            <td><?php echo (($row["product_status"] == 1) ? "sold" : "unsold") ?></td>
+                            <td><?php echo ( (!empty($row["purchase_price"])) ? "$" . $row["purchase_price"] : $row["purchase_price"]) ?></td>
+                            <td><?php echo ( (!empty($row["market_price"])) ? "$" . $row["market_price"] : $row["market_price"]) ?></td>
+                            <td><?php echo ( (!empty($row["sold_price"])) ? "$" . $row["sold_price"] : $row["sold_price"]) ?></td>
+                            <td><?php echo ( (!empty($row["profit"])) ? "$" . $row["profit"] : $row["profit"]) ?></td>
                             <td><?php echo $row["colorway"] ?></td>
                             <td><?php echo $row["purchase_date"] ?></td>
                         </tr>
@@ -72,7 +95,7 @@ $data = pg_fetch_all($result);
                 <h3>Create new item</h3>
 
 
-                <form method="post" action =# autocomplete="off">
+                <form name="insert" method="POST" action ="" autocomplete="off">
                     <label>Name<span>*</span><br>
                         <input name = "item_name" type = "text" size = "50" maxlength = "50" placeholder="Jordan 1 Retro High Obsidian UNC" required>
                     </label>
@@ -88,13 +111,16 @@ $data = pg_fetch_all($result);
                     <label>Market Price<br>
                         <input name = "item_market" type = "text" size = "15" maxlength = "15" placeholder="500" >
                     </label>
+                    <label>Sold For<br>
+                        <input name = "sold_price" type = "text" size = "15" maxlength = "15" placeholder="800" >
+                    </label>
                     <label>Colorway<br>
                         <input name = "item_color" type = "text" size = "35" maxlength = "35" placeholder="SAIL/OBSIDIAN-UNIVERSITY BLUE">
                     </label>
                     <label>Purchase Date<span>*</span><br>
                         <input type="date" name="purchase_date" required>
                     </label>
-                    <input type = "submit" value = "save">
+                    <input type = "submit" name="submit" value = "submit">
                 </form>
 
 
