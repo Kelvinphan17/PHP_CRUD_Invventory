@@ -23,17 +23,6 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
     header( "Location: {$_SERVER['REQUEST_URI']}", true, 303 );
     exit();
 }
-
-if (isset($_GET['delete']) and !empty($_GET['delete']) ) {
-    $id = (int) $_GET['delete'];
-
-    $query = pg_query($dbconn, "DELETE FROM inventory WHERE id = $id;");
-
-    $url = explode("/?", $_SERVER["REQUEST_URI"]);
-
-    header( "Location: $url[0]", true, 303 );
-    exit();
-}
 if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
     $id = (int) $_GET['edit'];
 
@@ -69,6 +58,7 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
 <html>
     <head>
         <?php require "header.php" ?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
 
@@ -82,10 +72,8 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
             <h3>Inventory</h3>
             <p>Track and manage your inventory of shoes.</p>
 
-            <form method="post" action =#>
-                <input name = "item_search" type = "text" size = "50" maxlength = "50" placeholder="Search">
-                <input type = "submit" value = "submit">
-                <input type = "reset" value = "clear">
+            <form method="post" action ="../models/ajax.php">
+                <input id="search" name = "item_search" type = "text" size = "50" maxlength = "50" placeholder="Search">
             </form>
 
             <div class ="additem">
@@ -109,7 +97,7 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
                             <th> Actions </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id = "table">
                         <?php foreach ($data as $row) {?>
                         <tr>
                             <td><?php echo $row["product_name"] ?></td>
@@ -124,12 +112,13 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
                             <td><?php echo $row["purchase_date"] ?></td>
                             <td> 
                                 <a href="inventory.php\?edit=<?php echo $row["id"] ?>"> <i class="fa-solid fa-pen-to-square"></i></a>
-                                <a onClick="return confirm('Are you sure you want to delete?')" href="inventory.php\?delete=<?php echo $row["id"] ?>"> <i class="fa-solid fa-trash-can"></i></a> 
+                                <button class="deletebtn" data-id="<?php echo $row["id"] ?>"><i class="fa-solid fa-trash-can"></i></button>
                             </td>
                         </tr>
                         <?php } ?>
                     </tbody>
                 </table>
+                <span id="result"></span>
             </diV>   
 
         </div>
@@ -237,8 +226,37 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
                 }
 
 
+                $(document).ready(function() {
+
+                    // On using the search bar, execute an AJAX call
+                    $("#search").keyup(function() {
+                        $.ajax({
+                            url: '../models/ajax.php',
+                            type: "POST",
+                            data: {search: $(this).val()},
+                            success: function(result){
+                                $("#table").html(result);
+                            }
+                        })
+                    })
+
+
+                    $(document).on("click", '.deletebtn', function() {
+                        console.log("pressed");
+                        $.ajax({
+                            url: '../models/ajax.php',
+                            type: "POST",
+                            data: {delete_id: $(this).data("id"), search_id: $("#search").val()},
+                            success: function(result){
+                                $("#table").html(result);
+                            }
+                        })
+                    })
+
+                })
 
             </script>
+            
         </div>
 
     </body>
