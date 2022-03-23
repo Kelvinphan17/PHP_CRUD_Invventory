@@ -182,6 +182,16 @@ body{
     opacity: 1;
 }
 
+.container .selected {
+    background-color: #cee1f6;
+
+}
+
+.container .hover {
+    background-color: rgba(206, 225, 246, 0.5);
+    
+}
+
 /* Popup CSS Styling */
 
 
@@ -194,9 +204,7 @@ body{
     border: none;
     cursor: pointer;
     margin-top:20px;
-    margin-right: 15px;
 }
-
 
 .container .additem span{
     padding-left: 7px;
