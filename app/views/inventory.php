@@ -190,72 +190,7 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
 
             </div>
             
-            <script>
-                var popup = document.getElementById("addpopup");
-
-                // Get the button that opens the popup
-                var btn = document.getElementById("additembtn");
-
-                // Get the span that closes the popup
-                var span = document.getElementsByClassName("close")[0];
-
-                function display() {
-                    popup.style.display = "block";
-                }
-
-                function closeDisplayFunc(){
-                    popup.style.display = "none";
-                }
-
-                window.closeDisplay = closeDisplayFunc;
-                // When user clicks on the button, open the popup
-                btn.onclick = function() {
-                    display();
-                }
-
-                // When the user clicks on the x, close the popup
-                span.onclick = function() {
-                    closeDisplay();
-                }
-
-                // When the user clicks anywhere outside of the popup, close it
-                window.onclick = function(event) {
-                    if (event.target == popup) {
-                        closeDisplay();
-                    }
-                }
-
-
-                $(document).ready(function() {
-
-                    // On using the search bar, execute an AJAX call
-                    $("#search").keyup(function() {
-                        $.ajax({
-                            url: '../models/ajax.php',
-                            type: "POST",
-                            data: {search: $(this).val()},
-                            success: function(result){
-                                $("#table").html(result);
-                            }
-                        })
-                    })
-
-
-                    $(document).on("click", '.deletebtn', function() {
-                        console.log("pressed");
-                        $.ajax({
-                            url: '../models/ajax.php',
-                            type: "POST",
-                            data: {delete_id: $(this).data("id"), search_id: $("#search").val()},
-                            success: function(result){
-                                $("#table").html(result);
-                            }
-                        })
-                    })
-
-                })
-
-            </script>
+            <script type="text/javascript" src="../models/events.js"></script>
             
         </div>
 
