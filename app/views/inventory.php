@@ -41,6 +41,27 @@ if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
 
 }
 
+if (isset($_POST['update']) and !empty($_POST['update']) ) {
+    $id = $_POST['id'];
+    $item_name = $_POST['item_name'];
+    $item_size = $_POST['item_size'];
+    $item_sku = (isset($_POST['item_sku'])) ? $_POST['item_sku'] : NULL;
+    $item_price = $_POST['item_price'];
+    $item_market = (!empty($_POST['item_market'])) ? $_POST['item_market'] : 'NULL';
+    $item_color = (isset($_POST['item_color'])) ? $_POST['item_color'] : NULL;
+    $purchase_date = $_POST['purchase_date'];
+    $sold_price = (!empty($_POST['sold_price'])) ? $_POST['sold_price'] : 'NULL';
+    $status = (!empty($_POST['sold_price'])) ? 1 : 0;
+    $profit = (!empty($_POST['sold_price'])) ? ($sold_price - $item_price) : 'NULL';
+
+    $query = pg_query($dbconn, "UPDATE inventory SET product_name = '$item_name', item_size = $item_size, style_code = '$item_sku', purchase_price = $item_price, market_price = $item_market,
+                                sold_price = $sold_price, profit = $profit, colorway = '$item_color', purchase_date = '$purchase_date', product_status = $status WHERE id = $id");
+
+    $url = explode("/?", $_SERVER["REQUEST_URI"]);
+    header( "Location: $url[0]", true, 303 );
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -146,7 +167,8 @@ if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
                     <label>Purchase Date<span>*</span><br>
                         <input type="date" name="purchase_date" value="' .$editdata[0]["purchase_date"]. '"required>
                     </label>
-                    <input type = "submit" name="submit" value = "submit">
+                        <input type="hidden" name="id" value='.$editdata[0]["id"].'>
+                    <input type = "submit" name="update" value = "update">
                 </form>' 
                 : 
                 '<form name="insert" method="POST" action ="" autocomplete="off">
@@ -175,10 +197,8 @@ if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
                         <input type="date" name="purchase_date" required>
                     </label>
                     <input type = "submit" name="submit" value = "submit">
-                </form>') ?>
+                </form><span class="close">&times;</span>') ?>
 
-
-                <span class="close">&times;</span>
             </div>
             
             <script>
@@ -190,20 +210,29 @@ if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
                 // Get the span that closes the popup
                 var span = document.getElementsByClassName("close")[0];
 
+                function display() {
+                    popup.style.display = "block";
+                }
+
+                function closeDisplayFunc(){
+                    popup.style.display = "none";
+                }
+
+                window.closeDisplay = closeDisplayFunc;
                 // When user clicks on the button, open the popup
                 btn.onclick = function() {
-                    popup.style.display = "block";
+                    display();
                 }
 
                 // When the user clicks on the x, close the popup
                 span.onclick = function() {
-                    popup.style.display = "none";
+                    closeDisplay();
                 }
 
                 // When the user clicks anywhere outside of the popup, close it
                 window.onclick = function(event) {
                     if (event.target == popup) {
-                        popup.style.display = "none";
+                        closeDisplay();
                     }
                 }
 
@@ -217,7 +246,8 @@ if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
     if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
         echo ' <script type = "text/javascript">',
             'var popup = document.getElementById("addpopup");', 
-            'popup.style.display = "block";',
+            'display();',
+            'window.closeDisplay = null;',
             '</script>';
     }
 ?>
