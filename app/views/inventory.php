@@ -51,8 +51,6 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
 
             <div class ="additem">
                 <button id = "additembtn"><i class="fas fa-plus-square"></i><span>Add Item</span></button>
-                <button id = "edititembtn"><i class="fa-solid fa-pen-to-square"></i><span>Edit Item</span></button>
-                <button id = "deleteitembtn"><i class="fa-solid fa-trash-can"></i></i><span>Delete Item</span></button>
             </div>
 
             <div class="table">
@@ -73,7 +71,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
                     </thead>
                     <tbody>
                         <?php foreach ($data as $row) {?>
-                        <tr>
+                        <tr id = <?php echo $row["id"] ?>>
                             <td><?php echo $row["product_name"] ?></td>
                             <td><?php echo $row["item_size"] ?></td>
                             <td><?php echo $row["style_code"] ?></td>
@@ -154,6 +152,43 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
                         popup.style.display = "none";
                     }
                 }
+
+                // Make table rows selectable
+                document.addEventListener("DOMContentLoaded", () => {
+
+                    const rows = document.querySelectorAll("tr");
+
+                    var selected = null;
+
+                    rows.forEach(row => {
+
+                        if ( row.parentNode.nodeName === 'TBODY') {
+
+                            row.onmouseover= () => { if (row !== selected) {row.classList.add("hover");}}
+                            row.onmouseout = () => { row.classList.remove("hover");}
+                            row.addEventListener("click", () => {
+
+                                if (row.className !== "selected"){
+
+                                    if ( selected !== null){
+
+                                        selected.classList.remove("selected");
+                                    }
+
+                                    row.classList.add("selected");
+                                    selected = row;
+                                }
+
+                            });
+                            
+                        }
+                    });
+
+                });
+
+
+
+
             </script>
         </div>
 
