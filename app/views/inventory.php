@@ -51,6 +51,8 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
 
             <div class ="additem">
                 <button id = "additembtn"><i class="fas fa-plus-square"></i><span>Add Item</span></button>
+                <button id = "edititembtn"><i class="fa-solid fa-pen-to-square"></i><span>Edit Item</span></button>
+                <button id = "deleteitembtn"><i class="fa-solid fa-trash-can"></i></i><span>Delete Item</span></button>
             </div>
 
             <div class="table">
