@@ -6,15 +6,6 @@ var btn = document.getElementById("additembtn");
 // Get the span that closes the popup
 var span = document.getElementsByClassName("close")[0];
 
-function display() {
-    popup.style.display = "block";
-}
-
-function closeDisplayFunc(){
-    popup.style.display = "none";
-}
-
-window.closeDisplay = closeDisplayFunc;
 // When user clicks on the button, open the popup
 btn.onclick = function() {
     display();
