@@ -316,3 +316,63 @@ body{
     padding: 0px 5px;
 }
 
+/* Confirm Dialog Styling */
+.dialog-overlay {
+	position: fixed;
+	top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+	transition: opacity 200ms;
+    color:#12345c;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+.dialog-overlay .dialog {
+    width: 500px;
+    height: 130px;
+    margin: 300px auto 0;
+    background-color: #fff;
+    border: 1px solid #666;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    border-radius: 3px;
+    overflow: hidden
+}
+.dialog-overlay .dialog header {
+    padding: 10px 8px;
+    background-color: #f6f7f9;
+    border-bottom: 1px solid #e5e5e5
+}
+.dialog-overlay .dialog header h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    display: inline-block
+}
+
+.dialog-overlay .dialog-msg{
+    padding: 10px 8px;
+}
+
+
+.dialog-overlay button{
+    position: relative;
+    bottom: 10px;
+    left: 350px;
+    width: 4rem;
+    height: 2rem;
+    margin-right: 5px;
+    color:#f0f6fc ;
+    background-color: #205ea6 ;
+    opacity: 0.8;
+    border:0;
+    border-radius: 3px;
+}
+
+.dialog-overlay .doAction{
+    background-color: #ff4136;    
+}
+
+.dialog-overlay button:hover{
+    opacity: 1;
+}
