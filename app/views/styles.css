@@ -182,16 +182,6 @@ body{
     opacity: 1;
 }
 
-.container .selected {
-    background-color: #cee1f6;
-
-}
-
-.container .hover {
-    background-color: rgba(206, 225, 246, 0.5);
-    
-}
-
 /* Popup CSS Styling */
 
 
@@ -318,5 +308,11 @@ body{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.container .inv_table td i {
+    color : #12345c;
+    text-decoration: none;
+    padding: 0px 5px;
 }
 
