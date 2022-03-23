@@ -23,6 +23,17 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
     exit();
 }
 
+if (isset($_GET['delete']) and !empty($_GET['delete']) ) {
+    $id = (int) $_GET['delete'];
+
+    $query = pg_query($dbconn, "DELETE FROM inventory WHERE id = $id;");
+
+    $url = explode("/?", $_SERVER["REQUEST_URI"]);
+
+    header( "Location: $url[0]", true, 303 );
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -67,11 +78,12 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
                             <th>Profit</th>
                             <th>Colorway</th>
                             <th>Date Purchased</th>
+                            <th> Actions </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($data as $row) {?>
-                        <tr id = <?php echo $row["id"] ?>>
+                        <tr>
                             <td><?php echo $row["product_name"] ?></td>
                             <td><?php echo $row["item_size"] ?></td>
                             <td><?php echo $row["style_code"] ?></td>
@@ -82,6 +94,10 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
                             <td><?php echo ( (!empty($row["profit"])) ? "$" . $row["profit"] : $row["profit"]) ?></td>
                             <td><?php echo $row["colorway"] ?></td>
                             <td><?php echo $row["purchase_date"] ?></td>
+                            <td> 
+                                <a href="\?edit=<?php echo $row["id"] ?>"> <i class="fa-solid fa-pen-to-square"></i></a>
+                                <a onClick="return confirm('Are you sure you want to delete?')" href="inventory.php\?delete=<?php echo $row["id"] ?>"> <i class="fa-solid fa-trash-can"></i></a> 
+                            </td>
                         </tr>
                         <?php } ?>
                     </tbody>
@@ -152,40 +168,6 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
                         popup.style.display = "none";
                     }
                 }
-
-                // Make table rows selectable
-                document.addEventListener("DOMContentLoaded", () => {
-
-                    const rows = document.querySelectorAll("tr");
-
-                    var selected = null;
-
-                    rows.forEach(row => {
-
-                        if ( row.parentNode.nodeName === 'TBODY') {
-
-                            row.onmouseover= () => { if (row !== selected) {row.classList.add("hover");}}
-                            row.onmouseout = () => { row.classList.remove("hover");}
-                            row.addEventListener("click", () => {
-
-                                if (row.className !== "selected"){
-
-                                    if ( selected !== null){
-
-                                        selected.classList.remove("selected");
-                                    }
-
-                                    row.classList.add("selected");
-                                    selected = row;
-                                }
-
-                            });
-                            
-                        }
-                    });
-
-                });
-
 
 
 
