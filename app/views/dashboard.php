@@ -31,22 +31,22 @@ require __DIR__ . ("/../models/CalculateStats.php");
     
                 <div class ="invworth">
                     <h3>Total Inventory Worth</h3>
-                    <p>$553.70</p>
+                    <p><?php echo Stats::CalcWorth($dbconn) ?></p>
                 </div>
     
                 <div class ="profit"> 
                     <h3>Net Profit</h3>
-                    <p id="profitnumber">$0</p>
+                    <p id="profitnumber"><?php echo Stats::CalcProfit($dbconn) ?></p>
                 </div>
 
                 <div class ="salescount"> 
                     <h3>Items Sold</h3>
-                    <p>0</p>
+                    <p><?php echo Stats::itemsSold($dbconn) ?></p>
                 </div>
     
                 <div class ="salesincome"> 
                     <h3>Sales Income</h3>
-                    <p>$0</p>
+                    <p><?php echo Stats::salesIncome($dbconn) ?></p>
                 </div>
     
             </div>
