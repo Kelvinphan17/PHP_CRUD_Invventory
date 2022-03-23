@@ -3,6 +3,7 @@
 $dbconn = pg_connect("host=localhost port=5432 dbname=subspace user=postgres");
 $result = pg_query($dbconn, "SELECT * FROM inventory");
 $data = pg_fetch_all($result);
+$editdata = null;
 
 if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
     $item_name = $_POST['item_name'];
@@ -32,6 +33,12 @@ if (isset($_GET['delete']) and !empty($_GET['delete']) ) {
 
     header( "Location: $url[0]", true, 303 );
     exit();
+}
+if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
+    $id = (int) $_GET['edit'];
+
+    $editdata = pg_fetch_all(pg_query($dbconn, "SELECT * FROM inventory WHERE id = $id;"));
+
 }
 
 ?>
@@ -95,7 +102,7 @@ if (isset($_GET['delete']) and !empty($_GET['delete']) ) {
                             <td><?php echo $row["colorway"] ?></td>
                             <td><?php echo $row["purchase_date"] ?></td>
                             <td> 
-                                <a href="\?edit=<?php echo $row["id"] ?>"> <i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="inventory.php\?edit=<?php echo $row["id"] ?>"> <i class="fa-solid fa-pen-to-square"></i></a>
                                 <a onClick="return confirm('Are you sure you want to delete?')" href="inventory.php\?delete=<?php echo $row["id"] ?>"> <i class="fa-solid fa-trash-can"></i></a> 
                             </td>
                         </tr>
@@ -109,9 +116,40 @@ if (isset($_GET['delete']) and !empty($_GET['delete']) ) {
         <div id="addpopup" class="overlay">
             <div class= "popup">
                 <h3>Create new item</h3>
-
-
-                <form name="insert" method="POST" action ="" autocomplete="off">
+                
+                <?php
+                
+                $test = "test";
+                echo  ( (($editdata) ) ? 
+                    '<form name="insert" method="POST" action ="" autocomplete="off">
+                    <label>Name<span>*</span><br>
+                        <input name = "item_name" type = "text" size = "50" maxlength = "50" value="' .$editdata[0]["product_name"]. '" required>
+                    </label>
+                    <label>Size<span>*</span><br>
+                        <input name = "item_size" type = "text" size = "5" maxlength = "5" value="' .$editdata[0]["item_size"]. '" required>
+                    </label>
+                    <label>Style Code<br>
+                        <input name = "item_sku" type = "text" size = "15" maxlength = "15" value="' .$editdata[0]["style_code"]. '" placeholder="555088-140">
+                    </label>
+                    <label>Purchase Price<span>*</span><br>
+                        <input name = "item_price" type = "text" size = "15" maxlength = "15" value="' .$editdata[0]["purchase_price"]. '" required>
+                    </label>
+                    <label>Market Price<br>
+                        <input name = "item_market" type = "text" size = "15" maxlength = "15" value="' .$editdata[0]["market_price"]. '" placeholder="500" >
+                    </label>
+                    <label>Sold For<br>
+                        <input name = "sold_price" type = "text" size = "15" maxlength = "15" value="' .$editdata[0]["sold_price"]. '" placeholder="800" >
+                    </label>
+                    <label>Colorway<br>
+                        <input name = "item_color" type = "text" size = "35" maxlength = "35" value="' .$editdata[0]["colorway"]. '" placeholder="SAIL/OBSIDIAN-UNIVERSITY BLUE">
+                    </label>
+                    <label>Purchase Date<span>*</span><br>
+                        <input type="date" name="purchase_date" value="' .$editdata[0]["purchase_date"]. '"required>
+                    </label>
+                    <input type = "submit" name="submit" value = "submit">
+                </form>' 
+                : 
+                '<form name="insert" method="POST" action ="" autocomplete="off">
                     <label>Name<span>*</span><br>
                         <input name = "item_name" type = "text" size = "50" maxlength = "50" placeholder="Jordan 1 Retro High Obsidian UNC" required>
                     </label>
@@ -137,7 +175,7 @@ if (isset($_GET['delete']) and !empty($_GET['delete']) ) {
                         <input type="date" name="purchase_date" required>
                     </label>
                     <input type = "submit" name="submit" value = "submit">
-                </form>
+                </form>') ?>
 
 
                 <span class="close">&times;</span>
@@ -175,5 +213,12 @@ if (isset($_GET['delete']) and !empty($_GET['delete']) ) {
         </div>
 
     </body>
-    
+<?php
+    if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
+        echo ' <script type = "text/javascript">',
+            'var popup = document.getElementById("addpopup");', 
+            'popup.style.display = "block";',
+            '</script>';
+    }
+?>
 </html>
