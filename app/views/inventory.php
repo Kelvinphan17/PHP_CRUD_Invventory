@@ -191,10 +191,23 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
             </div>
             
             <script type="text/javascript" src="../models/events.js"></script>
+
+            <script type="text/javascript">
+                function display() {
+                    popup.style.display = "block";
+                }
+
+                function closeDisplayFunc(){
+                    popup.style.display = "none";
+                }
+
+                window.closeDisplay = closeDisplayFunc;
+            </script>
             
         </div>
 
     </body>
+    
 <?php
     if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
         echo ' <script type = "text/javascript">',
