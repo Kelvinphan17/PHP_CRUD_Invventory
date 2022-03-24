@@ -47,7 +47,7 @@
 
         $GLOBALS['search_query'] = $value;
 
-        $result = pg_query($dbconn, "SELECT * FROM inventory WHERE product_name ILIKE '%$value%' ");
+        $result = pg_query($dbconn, "SELECT * FROM inventory WHERE product_name ILIKE '%$value%' ORDER BY id ASC");
 
         $data = pg_fetch_all($result);
 
@@ -62,7 +62,7 @@
 
         $value = $_POST['search_id'];
         
-        $result = pg_query($dbconn, "SELECT * FROM inventory WHERE product_name ILIKE '%$value%' ");
+        $result = pg_query($dbconn, "SELECT * FROM inventory WHERE product_name ILIKE '%$value%' ORDER BY id ASC");
 
         $data = pg_fetch_all( $result );
         

@@ -1,7 +1,7 @@
 <?php
 
 $dbconn = pg_connect("host=localhost port=5432 dbname=subspace user=postgres");
-$result = pg_query($dbconn, "SELECT * FROM inventory");
+$result = pg_query($dbconn, "SELECT * FROM inventory ORDER BY id ASC");
 $data = pg_fetch_all($result);
 $editdata = null;
 
