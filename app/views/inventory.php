@@ -78,52 +78,9 @@ $data = pg_fetch_all($result);
 
         <div id="addpopup" class="overlay">
             <div class= "popup" id="popup">
-                <h3>Create new item</h3>
-                
-            
-                <form id="insert" method="POST" autocomplete="off">
-                    <label>Name<span>*</span><br>
-                        <input name = "item_name" type = "text" size = "50" maxlength = "50" placeholder="Jordan 1 Retro High Obsidian UNC" required>
-                    </label>
-                    <label>Size<span>*</span><br>
-                        <input name = "item_size" type = "text" size = "5" maxlength = "5" placeholder="11" pattern="[1-9][0-8]?\.?[5]?[KYC]?" title= "Valid Size" required>
-                    </label>
-                    <label>Style Code<br>
-                        <input name = "item_sku" type = "text" size = "15" maxlength = "15" placeholder="555088-140">
-                    </label>
-                    <label>Purchase Price<span>*</span><br>
-                        <input name = "item_price" type = "text" size = "15" maxlength = "15" placeholder="300" pattern="\d*\.?\d+" title= "Valid positive integer" required>
-                    </label>
-                    <label>Market Price<br>
-                        <input name = "item_market" type = "text" size = "15" maxlength = "15" placeholder="500" >
-                    </label>
-                    <label>Sold For<br>
-                        <input name = "sold_price" type = "text" size = "15" maxlength = "15" placeholder="800" >
-                    </label>
-                    <label>Colorway<br>
-                        <input name = "item_color" type = "text" size = "35" maxlength = "35" placeholder="SAIL/OBSIDIAN-UNIVERSITY BLUE">
-                    </label>
-                    <label>Purchase Date<span>*</span><br>
-                        <input type="date" name="purchase_date" required>
-                    </label>
-                    <input type = "submit" name="submit" value = "submit">
-                </form><span class="close">&times;</span>
-
             </div>
             
             <script type="text/javascript" src="../models/events.js"></script>
-
-            <script type="text/javascript">
-                function display() {
-                    popup.style.display = "block";
-                }
-
-                function closeDisplayFunc(){
-                    popup.style.display = "none";
-                }
-
-                window.closeDisplay = closeDisplayFunc;
-            </script>
             
         </div>
 
