@@ -13,7 +13,7 @@
             $purchase_price =  ( (!empty($row["purchase_price"])) ? "$" . $row["purchase_price"] : $row["purchase_price"]);
             $market_price = ( (!empty($row["market_price"])) ? "$" . $row["market_price"] : $row["market_price"]);
             $sold_price = ( (!empty($row["sold_price"])) ? "$" . $row["sold_price"] : $row["sold_price"]);
-            $profit =  ( (isset($row["profit"])) ? "$" . $row["profit"] : $row["profit"]);
+            $profit =  ( (isset($row["profit"])) ? "$" .$row["profit"] : $row["profit"]);
             $colorway = $row['colorway'];
             $purchase_date = $row['purchase_date'];
             $id = $row['id'];
@@ -166,13 +166,13 @@
         $item_name = $_POST['item_name'];
         $item_size = $_POST['item_size'];
         $item_sku = (isset($_POST['item_sku'])) ? $_POST['item_sku'] : NULL;
-        $item_price = $_POST['item_price'];
-        $item_market = (!empty($_POST['item_market'])) ? $_POST['item_market'] : 'NULL';
+        $item_price = number_format((float)$_POST['item_price'], 2, ".",",");
+        $item_market = (!empty($_POST['item_market'])) ? number_format((float)$_POST['item_market'], 2, ".",",") : 'NULL';
         $item_color = (isset($_POST['item_color'])) ? $_POST['item_color'] : NULL;
         $purchase_date = $_POST['purchase_date'];
-        $sold_price = (!empty($_POST['sold_price'])) ? $_POST['sold_price'] : 'NULL';
+        $sold_price = (!empty($_POST['sold_price'])) ? number_format((float)$_POST['sold_price'], 2, ".",",") : 'NULL';
         $status = (!empty($_POST['sold_price'])) ? 1 : 0;
-        $profit = (!empty($_POST['sold_price'])) ? ($sold_price - $item_price) : 'NULL';
+        $profit = (!empty($_POST['sold_price'])) ? number_format((float)($sold_price - $item_price), 2, ".",",") : 'NULL';
     
         $query = pg_query($dbconn, "UPDATE inventory SET product_name = '$item_name', item_size = $item_size, style_code = '$item_sku', purchase_price = $item_price, market_price = $item_market,
                                     sold_price = $sold_price, profit = $profit, colorway = '$item_color', purchase_date = '$purchase_date', product_status = $status WHERE id = $id");
@@ -189,13 +189,13 @@
         $item_name = $_POST['item_name'];
         $item_size = $_POST['item_size'];
         $item_sku = (isset($_POST['item_sku'])) ? $_POST['item_sku'] : NULL;
-        $item_price = $_POST['item_price'];
-        $item_market = (!empty($_POST['item_market'])) ? $_POST['item_market'] : 'NULL';
+        $item_price = number_format((float)$_POST['item_price'], 2, ".",",");
+        $item_market = (!empty($_POST['item_market'])) ? number_format((float)$_POST['item_market'], 2, ".",",") : 'NULL';
         $item_color = (isset($_POST['item_color'])) ? $_POST['item_color'] : NULL;
         $purchase_date = $_POST['purchase_date'];
-        $sold_price = (!empty($_POST['sold_price'])) ? $_POST['sold_price'] : 'NULL';
+        $sold_price = (!empty($_POST['sold_price'])) ? number_format((float)$_POST['sold_price'], 2, ".",",") : 'NULL';
         $status = (!empty($_POST['sold_price'])) ? 1 : 0;
-        $profit = (!empty($_POST['sold_price'])) ? ($sold_price - $item_price) : 'NULL';
+        $profit = (!empty($_POST['sold_price'])) ? number_format((float)($sold_price - $item_price), 2, ".",",") : 'NULL';
 
         $query = pg_query($dbconn, "INSERT INTO inventory (product_name, item_size, style_code, purchase_price, market_price, sold_price, profit, colorway, purchase_date, product_status) 
         VALUES ('$item_name', $item_size, '$item_sku', $item_price, $item_market, $sold_price, $profit, '$item_color', '$purchase_date', $status);");
