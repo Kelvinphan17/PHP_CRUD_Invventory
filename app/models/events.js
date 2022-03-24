@@ -3,18 +3,15 @@ var popup = document.getElementById("addpopup");
 // Get the button that opens the popup
 var btn = document.getElementById("additembtn");
 
-// Get the span that closes the popup
-var span = document.getElementsByClassName("close")[0];
-
-// When user clicks on the button, open the popup
-btn.onclick = function() {
-    display();
+function display() {
+    popup.style.display = "block";
 }
 
-// When the user clicks on the x, close the popup
-span.onclick = function() {
-    closeDisplay();
+function closeDisplayFunc(){
+    popup.style.display = "none";
 }
+
+window.closeDisplay = closeDisplayFunc;
 
 // When the user clicks anywhere outside of the popup, close it
 window.onclick = function(event) {
@@ -49,9 +46,11 @@ $(document).ready(function() {
             success: function(result){
                 $("#popup").html(result);
                 display();
+
+                var span = document.getElementsByClassName("close")[0];
+                span.addEventListener("click",function(){closeDisplay();});
             }
         })
-
 
     })
 
