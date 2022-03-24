@@ -13,7 +13,7 @@
             $purchase_price =  ( (!empty($row["purchase_price"])) ? "$" . $row["purchase_price"] : $row["purchase_price"]);
             $market_price = ( (!empty($row["market_price"])) ? "$" . $row["market_price"] : $row["market_price"]);
             $sold_price = ( (!empty($row["sold_price"])) ? "$" . $row["sold_price"] : $row["sold_price"]);
-            $profit =  ( (!empty($row["profit"])) ? "$" . $row["profit"] : $row["profit"]);
+            $profit =  ( (isset($row["profit"])) ? "$" . $row["profit"] : $row["profit"]);
             $colorway = $row['colorway'];
             $purchase_date = $row['purchase_date'];
             $id = $row['id'];
