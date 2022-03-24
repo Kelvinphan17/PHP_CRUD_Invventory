@@ -25,7 +25,7 @@ window.onclick = function(event) {
 
 
 $(document).ready(function() {
-
+    
     // On using the search bar, execute an AJAX call
     $("#search").keyup(function() {
         $.ajax({
@@ -38,9 +38,43 @@ $(document).ready(function() {
         })
     })
 
+    $(document).on("click", '#additembtn', function(){
+
+        $button = $(this);
+
+        $.ajax({
+            url: '../models/ajax.php',
+            type: "POST",
+            data: {add:1},
+            success: function(result){
+                $("#popup").html(result);
+                display();
+            }
+        })
+
+
+    })
+
+    $(document).on("click", '.editbtn', function(){
+
+        $button = $(this);
+
+        $.ajax({
+            url: '../models/ajax.php',
+            type: "POST",
+            data: { edit_id: $button.data("id")},
+            success: function(result){
+                $("#popup").html(result);
+                display();
+            }
+        })
+
+
+    })
+
 
     $(document).on("click", '.deletebtn', function() {
-
+        
         $button = $(this);
 
         var $content =  
@@ -85,5 +119,50 @@ $(document).ready(function() {
         
 
     })
+
+
+    $(document).on("submit","#insert", function(e){
+
+        e.preventDefault();
+
+        var id = $("input[name=id]").val();
+        var item_name = $("input[name=item_name]").val();
+        var item_size = $("input[name=item_size]").val();
+        var item_sku = $("input[name=item_sku]").val();
+        var item_price = $("input[name=item_price]").val();
+        var item_market = $("input[name=item_market]").val();
+        var item_color = $("input[name=item_color]").val();
+        var purchase_date = $("input[name=purchase_date]").val();
+        var sold_price = $("input[name=sold_price]").val();
+        var status = (sold_price !== null) ? 1 : 0;
+        var profit = (sold_price !== null) ? (sold_price - item_price) : 'NULL';
+        console.log(id);
+        var formType = ( typeof id !== "undefined") ? 1 : 0;
+
+        $.ajax({
+            url: '../models/ajax.php',
+            type: "POST",
+            data: {
+                type: formType,
+                id:id,
+                item_name:item_name,
+                item_size:item_size,
+                item_sku:item_sku,
+                item_price:item_price,
+                item_market:item_market,
+                item_color:item_color,
+                purchase_date:purchase_date,
+                sold_price:sold_price,
+                status:status,
+                profit:profit
+            },
+            success: function(result){
+                $("#table").html(result);
+            }
+        })
+        closeDisplayFunc();
+
+    })
+    
 
 })

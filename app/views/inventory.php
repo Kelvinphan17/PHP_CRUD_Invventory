@@ -3,53 +3,6 @@
 $dbconn = pg_connect("host=localhost port=5432 dbname=subspace user=postgres");
 $result = pg_query($dbconn, "SELECT * FROM inventory ORDER BY id ASC");
 $data = pg_fetch_all($result);
-$editdata = null;
-
-if (isset($_POST['submit']) and !empty($_POST['submit']) ) {
-    $item_name = $_POST['item_name'];
-    $item_size = $_POST['item_size'];
-    $item_sku = (isset($_POST['item_sku'])) ? $_POST['item_sku'] : NULL;
-    $item_price = $_POST['item_price'];
-    $item_market = (!empty($_POST['item_market'])) ? $_POST['item_market'] : 'NULL';
-    $item_color = (isset($_POST['item_color'])) ? $_POST['item_color'] : NULL;
-    $purchase_date = $_POST['purchase_date'];
-    $sold_price = (!empty($_POST['sold_price'])) ? $_POST['sold_price'] : 'NULL';
-    $status = (!empty($_POST['sold_price'])) ? 1 : 0;
-    $profit = (!empty($_POST['sold_price'])) ? ($sold_price - $item_price) : 'NULL';
-
-    $query = pg_query($dbconn, "INSERT INTO inventory (product_name, item_size, style_code, purchase_price, market_price, sold_price, profit, colorway, purchase_date, product_status) 
-    VALUES ('$item_name', $item_size, '$item_sku', $item_price, $item_market, $sold_price, $profit, '$item_color', '$purchase_date', $status);");
-
-    header( "Location: {$_SERVER['REQUEST_URI']}", true, 303 );
-    exit();
-}
-if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
-    $id = (int) $_GET['edit'];
-
-    $editdata = pg_fetch_all(pg_query($dbconn, "SELECT * FROM inventory WHERE id = $id;"));
-
-}
-
-if (isset($_POST['update']) and !empty($_POST['update']) ) {
-    $id = $_POST['id'];
-    $item_name = $_POST['item_name'];
-    $item_size = $_POST['item_size'];
-    $item_sku = (isset($_POST['item_sku'])) ? $_POST['item_sku'] : NULL;
-    $item_price = $_POST['item_price'];
-    $item_market = (!empty($_POST['item_market'])) ? $_POST['item_market'] : 'NULL';
-    $item_color = (isset($_POST['item_color'])) ? $_POST['item_color'] : NULL;
-    $purchase_date = $_POST['purchase_date'];
-    $sold_price = (!empty($_POST['sold_price'])) ? $_POST['sold_price'] : 'NULL';
-    $status = (!empty($_POST['sold_price'])) ? 1 : 0;
-    $profit = (!empty($_POST['sold_price'])) ? ($sold_price - $item_price) : 'NULL';
-
-    $query = pg_query($dbconn, "UPDATE inventory SET product_name = '$item_name', item_size = $item_size, style_code = '$item_sku', purchase_price = $item_price, market_price = $item_market,
-                                sold_price = $sold_price, profit = $profit, colorway = '$item_color', purchase_date = '$purchase_date', product_status = $status WHERE id = $id");
-
-    $url = explode("/?", $_SERVER["REQUEST_URI"]);
-    header( "Location: $url[0]", true, 303 );
-    exit();
-}
 
 ?>
 
@@ -111,7 +64,7 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
                             <td><?php echo $row["colorway"] ?></td>
                             <td><?php echo $row["purchase_date"] ?></td>
                             <td> 
-                                <a href="inventory.php\?edit=<?php echo $row["id"] ?>"> <i class="fa-solid fa-pen-to-square"></i></a>
+                                <button class="editbtn" data-id="<?php echo $row["id"] ?>"><i class="fa-solid fa-pen-to-square"></i></button>
                                 <button class="deletebtn" data-id="<?php echo $row["id"] ?>"><i class="fa-solid fa-trash-can"></i></button>
                             </td>
                         </tr>
@@ -124,43 +77,11 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
         </div>
 
         <div id="addpopup" class="overlay">
-            <div class= "popup">
+            <div class= "popup" id="popup">
                 <h3>Create new item</h3>
                 
-                <?php
-                
-                $test = "test";
-                echo  ( (($editdata) ) ? 
-                    '<form name="insert" method="POST" action ="" autocomplete="off">
-                    <label>Name<span>*</span><br>
-                        <input name = "item_name" type = "text" size = "50" maxlength = "50" value="' .$editdata[0]["product_name"]. '" required>
-                    </label>
-                    <label>Size<span>*</span><br>
-                        <input name = "item_size" type = "text" size = "5" maxlength = "5" value="' .$editdata[0]["item_size"]. '" required>
-                    </label>
-                    <label>Style Code<br>
-                        <input name = "item_sku" type = "text" size = "15" maxlength = "15" value="' .$editdata[0]["style_code"]. '" placeholder="555088-140">
-                    </label>
-                    <label>Purchase Price<span>*</span><br>
-                        <input name = "item_price" type = "text" size = "15" maxlength = "15" value="' .$editdata[0]["purchase_price"]. '" required>
-                    </label>
-                    <label>Market Price<br>
-                        <input name = "item_market" type = "text" size = "15" maxlength = "15" value="' .$editdata[0]["market_price"]. '" placeholder="500" >
-                    </label>
-                    <label>Sold For<br>
-                        <input name = "sold_price" type = "text" size = "15" maxlength = "15" value="' .$editdata[0]["sold_price"]. '" placeholder="800" >
-                    </label>
-                    <label>Colorway<br>
-                        <input name = "item_color" type = "text" size = "35" maxlength = "35" value="' .$editdata[0]["colorway"]. '" placeholder="SAIL/OBSIDIAN-UNIVERSITY BLUE">
-                    </label>
-                    <label>Purchase Date<span>*</span><br>
-                        <input type="date" name="purchase_date" value="' .$editdata[0]["purchase_date"]. '"required>
-                    </label>
-                        <input type="hidden" name="id" value='.$editdata[0]["id"].'>
-                    <input type = "submit" name="update" value = "update">
-                </form>' 
-                : 
-                '<form name="insert" method="POST" action ="" autocomplete="off">
+            
+                <form id="insert" method="POST" autocomplete="off">
                     <label>Name<span>*</span><br>
                         <input name = "item_name" type = "text" size = "50" maxlength = "50" placeholder="Jordan 1 Retro High Obsidian UNC" required>
                     </label>
@@ -186,7 +107,7 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
                         <input type="date" name="purchase_date" required>
                     </label>
                     <input type = "submit" name="submit" value = "submit">
-                </form><span class="close">&times;</span>') ?>
+                </form><span class="close">&times;</span>
 
             </div>
             
@@ -207,14 +128,4 @@ if (isset($_POST['update']) and !empty($_POST['update']) ) {
         </div>
 
     </body>
-    
-<?php
-    if (isset($_GET['edit']) and !empty($_GET['edit']) ) {
-        echo ' <script type = "text/javascript">',
-            'var popup = document.getElementById("addpopup");', 
-            'display();',
-            'window.closeDisplay = null;',
-            '</script>';
-    }
-?>
 </html>
