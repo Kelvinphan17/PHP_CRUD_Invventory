@@ -57,10 +57,10 @@ $data = pg_fetch_all($result);
                             <td><?php echo $row["item_size"] ?></td>
                             <td><?php echo $row["style_code"] ?></td>
                             <td><?php echo (($row["product_status"] == 1) ? "sold" : "unsold") ?></td>
-                            <td><?php echo ( (!empty($row["purchase_price"])) ? "$" . $row["purchase_price"] : $row["purchase_price"]) ?></td>
-                            <td><?php echo ( (!empty($row["market_price"])) ? "$" . $row["market_price"] : $row["market_price"]) ?></td>
-                            <td><?php echo ( (!empty($row["sold_price"])) ? "$" . $row["sold_price"] : $row["sold_price"]) ?></td>
-                            <td><?php echo ( (!empty($row["profit"])) ? "$" . $row["profit"] : $row["profit"]) ?></td>
+                            <td><?php echo ( (!empty($row["purchase_price"])) ? "$" . number_format((float)$row["purchase_price"], 2, ".",",") : $row["purchase_price"]) ?></td>
+                            <td><?php echo ( (!empty($row["market_price"])) ? "$" . number_format((float)$row["market_price"], 2, ".",",") : $row["market_price"]) ?></td>
+                            <td><?php echo ( (!empty($row["sold_price"])) ? "$" .number_format((float)$row["sold_price"], 2, ".",",") : $row["sold_price"]) ?></td>
+                            <td><?php echo ( (isset($row["profit"])) ? "$" .number_format((float) $row["profit"], 2, ".",",") : $row["profit"]) ?></td>
                             <td><?php echo $row["colorway"] ?></td>
                             <td><?php echo $row["purchase_date"] ?></td>
                             <td> 
