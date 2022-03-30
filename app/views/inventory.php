@@ -34,21 +34,9 @@ $data = pg_fetch_all($result);
             </div>
 
             <div class="table">
-                <table class="inv_table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Size</th>
-                            <th>SKU</th>
-                            <th>Status</th>
-                            <th>Purchase Total</th>
-                            <th>Market Price</th>
-                            <th>Sold For</th>
-                            <th>Profit</th>
-                            <th>Colorway</th>
-                            <th>Date Purchased</th>
-                            <th> Actions </th>
-                        </tr>
+                <table class="inv_table" id = "inv_table">
+                    <thead id="tableHead">
+                        <?php include "tableHead.php"; ?>
                     </thead>
                     <tbody id = "table">
                         <?php foreach ($data as $row) {?>

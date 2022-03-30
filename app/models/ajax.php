@@ -213,6 +213,57 @@
         displayAddForm();
     }
 
+    if (isset($_POST['toSort']) and !empty($_POST['toSort'])) {
+
+
+        $column = $_POST['toSort'];
+
+        $sortOrder = $_POST['sortOrder'];
+
+        $asc_or_desc = $sortOrder == 'asc' ? 'desc' : 'asc';
+        $up_or_down = str_replace(array('asc','desc'), array('up','down'), $asc_or_desc); 
+
+        function appendSortOrder($columnName, $column, $up_or_down ){
+
+            return $columnName == $column ? '-'.$up_or_down : '';
+        }
+
+        $buttonName = "<button class=sort data-id=product_name data-order=".$asc_or_desc."><i class='fa-solid fa-sort". appendSortOrder("product_name",$column,$up_or_down) ."'></i></button>";
+        $buttonSize = "<button class=sort data-id=item_size data-order=".$asc_or_desc."><i class='fa-solid fa-sort". appendSortOrder("item_size",$column,$up_or_down) ."'></i></button>";
+        $buttonStatus = "<button class=sort data-id=product_status data-order=".$asc_or_desc."><i class='fa-solid fa-sort". appendSortOrder("product_status",$column,$up_or_down) ."'></i></button>";
+        $buttonPurchase = "<button class=sort data-id=purchase_price data-order=".$asc_or_desc."><i class='fa-solid fa-sort". appendSortOrder("purchase_price",$column,$up_or_down) ."'></i></button>";
+        $buttonMarket = "<button class=sort data-id=market_price data-order=".$asc_or_desc."><i class='fa-solid fa-sort". appendSortOrder("market_price",$column,$up_or_down) ."'></i></button>";
+        $buttonSold = "<button class=sort data-id=sold_price data-order=".$asc_or_desc."><i class='fa-solid fa-sort". appendSortOrder("sold_price",$column,$up_or_down) ."'></i></button>";
+        $buttonProfit = "<button class=sort data-id=profit data-order=".$asc_or_desc."><i class='fa-solid fa-sort". appendSortOrder("profit",$column,$up_or_down) ."'></i></button>";
+        $buttonDate = "<button class=sort data-id=purchase_date data-order=".$asc_or_desc."><i class='fa-solid fa-sort". appendSortOrder("purchase_date",$column,$up_or_down) ."'></i></button>";
+
+        $result = pg_query($dbconn, "SELECT * FROM inventory ORDER BY $column $asc_or_desc");
+
+        $data = pg_fetch_all( $result );
+
+        echo
+        "
+        <thead id = tableHead>
+            <tr>
+                <th>Name $buttonName</th>
+                <th>Size $buttonSize</th>
+                <th><br>SKU</th>
+                <th>Status $buttonStatus</th>
+                <th>Purchase Total $buttonPurchase</th>
+                <th>Market Price $buttonMarket</th>
+                <th>Sold For $buttonSold</th>
+                <th>Profit $buttonProfit</th>
+                <th><br>Colorway</th>
+                <th>Date Purchased $buttonDate</th>
+                <th><br>Actions </th>
+            </tr>
+        </thead>
+        <tbody id = table>";
+
+        displayTable($data);
+
+        echo "</tbody>";
+    }
 
 
 
