@@ -237,7 +237,7 @@
         $buttonProfit = "<button class=sort data-id=profit data-order=".$asc_or_desc."><i class='fa-solid fa-sort". appendSortOrder("profit",$column,$up_or_down) ."'></i></button>";
         $buttonDate = "<button class=sort data-id=purchase_date data-order=".$asc_or_desc."><i class='fa-solid fa-sort". appendSortOrder("purchase_date",$column,$up_or_down) ."'></i></button>";
 
-        $result = pg_query($dbconn, "SELECT * FROM inventory ORDER BY $column $asc_or_desc");
+        $result = pg_query($dbconn, "SELECT * FROM inventory ORDER BY $column $asc_or_desc NULLS LAST");
 
         $data = pg_fetch_all( $result );
 
