@@ -59,9 +59,13 @@ All icons were imported from https://fontawesome.com/.
 
 The subspace logo was handmade using adobe illustrator and stored in the images subfolder [here](../images/logo.png).
 
-Below is a screenshot which includes the three icons taken from font awesome (home, inventory and plus) and the subspace logo desgined using adobe illustrator.
+Below is a screenshot which includes the six icons taken from font awesome and the subspace logo desgined using adobe illustrator. These eight icons include home, inventory, plus, edit, delete and default sort.
 
 ![Screenshot of all icons and images used](../images/allicons.PNG)
+
+Below are the two extra states of sorting, sorting up and sorting down.
+
+![Screenshot of sort-up](../images/sortup.png) ![Screenshot of sort-down](../images/sortdown.png)
 
 ## Buttons, Form Elements and Components
 
@@ -70,13 +74,14 @@ In the case of "Add item", as it is an anchor element with an icon embedded into
 
 These buttons can be seen in the image below.
 ![Screenshot of all buttons](../images/buttons.PNG)
-  
-For one of the form elements there is a simple search form with a submit and clear button to search through the inventory table pictured below.
-![Screenshot of search form](../images/Form2.PNG)
 
 To access the add item form, we have to click on the "Add item" button which will then reveal a new div that overlays the current page by setting the background to black with an alpha value of 0.5. Normally, this overlay is hidden, but on click of "Add item" the overlay will be disaplayed and will physically be at a higher z-index than the rest of the page thus it will appear on top. This overlay popup includes the add item form, one button and one anchor. The button serves as a submit button for all the inputs while the anchor is simply a close button that will set the overlay back to a none type for display. The full popup view can be seen in the screenshot below.
 ![Screenshot of the popup overlay](../images/Popup.PNG)
 
 The add item form element is for inputting data about a new item to be added to the inventory list. This overlay includes the required inputs name, size, purchase price and purchase date, all denoted with a red asterisk. From the required attributes, sizing and purchase price are validated to be of the correct format, i.e sizing cannot be 11.7 and purchase price can't include letters. The rest of the form includes optional inputs which include style code, market price and colorway. Below is a screenshot of the form.
 ![Screenshot of the add item form](../images/Form1.PNG)
+
+The edit form elelment is for updating data of an entry from the inventory list. This overlay is prefilled with all information from the database pertaining to it's respective entry. The update button submits the updated data for processing. Below is a screenshot of the form.
+
+![Screenshot of the edit item form](../images/editform.png)
 
