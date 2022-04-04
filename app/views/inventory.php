@@ -59,7 +59,6 @@ $data = pg_fetch_all($result);
                         <?php } ?>
                     </tbody>
                 </table>
-                <span id="result"></span>
             </diV>   
 
         </div>
