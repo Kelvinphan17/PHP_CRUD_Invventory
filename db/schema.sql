@@ -5,8 +5,6 @@ CREATE SEQUENCE actions_id_seq
   NO MAXVALUE
   CACHE 1;
 
-CREATE TYPE prod_status AS ENUM ('sold', 'unsold');
-
 CREATE TABLE inventory (
   id integer NOT NULL DEFAULT nextval('actions_id_seq'::regclass),
   product_name varchar(255) NOT NULL,
@@ -16,6 +14,8 @@ CREATE TABLE inventory (
   market_price decimal,
   colorway varchar(255),
   purchase_date date,
-  product_status prod_status,
+  product_status int,
+  sold_price decimal,
+  profit decimal,
   PRIMARY KEY (id)
 );

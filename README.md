@@ -137,3 +137,6 @@ This is available under
 You can then visit `http://localhost:4000` to see the application running.
 
 ![Visiting the home page](/images/app_running.PNG)
+
+# Deliverable 4
+To view the requirements, please visit [here](docs/Deliverable4.md).
